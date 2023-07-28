@@ -1,13 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <cstring>
 using namespace std;
-vector<int> wt = {1, 5, 11, 5};
-static bool t[6][12];
-
+vector<int> wt = {1, 5, 11, 15};
+static int t[4][11 + 1];
+int sum(vector<int> v)
+{
+    int s = 0;
+    for (auto i : v)
+        s += i;
+    return s;
+}
 bool k(int w, int n)
 {
-
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= w; j++)
@@ -20,34 +24,17 @@ bool k(int w, int n)
     }
     return t[n][w];
 }
-int sumFunc(vector<int> v)
-{
-    int s = 0;
-    for (auto i : v)
-        s += i;
-    return s;
-}
-
 int main()
 {
+    int target = sum(wt), n = wt.size();
 
-    int n = wt.size();
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < sumFunc(wt); j++)
-        {
-            if (i == 0)
-                t[i][j] = false;
-            if (j == 0)
-                t[i][j] = true;
-        }
-    }
-
-    int t_sum = sumFunc(wt);
-    if (t_sum % 2 != 0)
-        return false;
+    if (target % 2 != 0)
+        cout << "\nNot Possible ";
     else
     {
-        cout << "\nFinal answer : " << k(t_sum++ / 2, n++);
+
+        for (int i = 0; i < n; i++)
+            t[i][0] = true;
+        cout << k(target / 2, n);
     }
 }
