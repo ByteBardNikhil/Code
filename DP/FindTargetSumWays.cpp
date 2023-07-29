@@ -7,6 +7,12 @@ int main()
     int t = 3;
     int sum = sumF(v);
     int s = (sum - t) / 2;
+
+    if (t > s || (s - t) % 2 == 1)
+        return 0;
+    else
+    {
+    }
 }
 int sumF(vector<int> v)
 {
