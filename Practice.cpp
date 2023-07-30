@@ -1,21 +1,25 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
+#include <cstring>
 using namespace std;
 int main()
 {
-    string s = "aBc";
-
-    for (auto i : s)
+    vector<int> coins = {1, 2, 3, 5};
+    int amt = 5;
+    vector<int> t(amt + 1, INT8_MAX);
+    t[0] = 0;
+    cout << t[0];
+    for (auto coin : coins)
     {
-        if (i >= 'A' && i <= 'Z')
+        for (int i = coin; i <= amt; i++)
         {
-            char ch = i + ('a' - 'A');
-            cout << ch;
-        }
-        if (i >= 'a' && i <= 'z')
-        {
-            char ch = i - ('a' - 'A');
-            cout << ch;
+            if (t[i - coin] != INT8_MAX)
+            {
+
+                t[i] = min(t[i], t[i - coin] + 1);
+            }
         }
     }
+    cout << t[amt];
 }
