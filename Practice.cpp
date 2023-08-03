@@ -1,25 +1,21 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <cstring>
 using namespace std;
 int main()
 {
-    vector<int> coins = {1, 2, 3, 5};
-    int amt = 5;
-    vector<int> t(amt + 1, INT8_MAX);
-    t[0] = 0;
-    cout << t[0];
-    for (auto coin : coins)
-    {
-        for (int i = coin; i <= amt; i++)
-        {
-            if (t[i - coin] != INT8_MAX)
-            {
+    vector<int> v = {2, 3, 5};
+    int target = 4;
+    int diff = INT8_MAX;
+    pair<int, int> p;
 
-                t[i] = min(t[i], t[i - coin] + 1);
-            }
+    int l = 0, r = v.size() - 1;
+    while (l < r)
+    {
+        int sum = v[l] + v[r];
+        int curr = abs(sum - diff);
+        if (curr < diff)
+        {
+            curr = diff;
         }
     }
-    cout << t[amt];
 }
