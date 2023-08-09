@@ -1,11 +1,15 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
+vector<vector<char>> f;
 void toh(char s, char d, char h, int n)
 {
     if (n == 1)
     {
         cout << "\nMoving plate 1 from " << s << " to " << d;
+
+        f.push_back({s, d});
         return;
     }
     else
@@ -19,4 +23,12 @@ void toh(char s, char d, char h, int n)
 int main()
 {
     toh('A', 'B', 'C', 3);
+    cout << "\n";
+
+    for (auto i : f)
+    {
+        for (auto j : i)
+            cout << j << " ";
+        cout << '\n';
+    }
 }

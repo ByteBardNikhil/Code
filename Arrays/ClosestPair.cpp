@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    vector<int> v = {2, 3, 5};
+    vector<int> v = {2, 3, 5}; // Remember array must be sorted
     int target = 4;
 
     int diff = INT16_MAX;
@@ -17,7 +17,7 @@ int main()
         int curr = abs(sum - target);
         if (curr < diff)
         {
-            curr = diff;
+            diff = curr;
             p = make_pair(l, r);
         }
         if (sum < target)

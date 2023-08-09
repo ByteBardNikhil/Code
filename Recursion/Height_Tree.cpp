@@ -21,11 +21,17 @@ int height(node *root)
 }
 int main()
 {
-    node *root;
+    node *root = new node;
 
     root->data = 45;
-    root->left = nullptr;
-    root->right = nullptr;
+    root->left = new node;
+    root->right = new node;
+    root->left->data = 43;
+    root->left->left = nullptr;
+    root->left->right = nullptr;
+    root->right->data = 47;
+    root->right->left = nullptr;
+    root->right->right = nullptr;
 
     cout << "\n Height of Tree : " << height(root);
 }
