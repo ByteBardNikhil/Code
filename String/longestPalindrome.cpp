@@ -7,5 +7,4 @@ int main()
 {
 
     string a = "5*2+1";
-    return 0;
 }

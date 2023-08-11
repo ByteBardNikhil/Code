@@ -1,18 +1,12 @@
 #include <iostream>
 #include <vector>
-
+#include <unordered_map>
 using namespace std;
-
-void func(int n)
-{
-    if (n == 0)
-        return;
-    func(n - 1);
-
-    cout << n << "\n";
-}
 
 int main()
 {
-    func(5);
+    unordered_map<char, int> m;
+    string p = "for";
+    for (auto i : p)
+        m[i]++;
 }
