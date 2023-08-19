@@ -27,4 +27,5 @@ int main()
         else
             p2++;
     }
+    cout << "\nPair : " << p.first << " " << p.second;
 }

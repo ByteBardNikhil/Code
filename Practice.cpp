@@ -5,31 +5,50 @@ using namespace std;
 
 int main()
 {
-    vector<int> a = {1, 2, 3, 4, 0, 5, 6, 7, 0, 8, 9, 0, 0};
+
+    vector<int> a = {1, 3, 5, 7, 8};
+    vector<int> b = {0, 2, 4, 6};
     int n = a.size();
-    int j = -1;
-    for (int i = 0; i < n; i++)
+    int m = b.size();
+    int l = 0, r = 0;
+    vector<int> c;
+    int index = 0;
+    while (l < n && r < m)
     {
-        if (a[i] == 0)
+
+        if (a[l] <= b[r])
         {
-            j = i;
-            break;
+
+            c.push_back(a[l]);
+            l++;
+            index++;
+        }
+        else
+        {
+            c.push_back(b[r]);
+            index++;
+            r++;
         }
     }
-    if (j == -1)
+    while (l < n)
+
     {
-        cout << "\nNo";
-        return 0;
+        c.push_back(a[l]);
+        l++;
     }
-    for (int i = j + 1; i < n; i++)
+    while (r < m)
     {
-        if (a[i] != 0)
-        {
-            swap(a[i], a[j]);
-            j++;
-        }
+        c.push_back(a[r]);
     }
-    for (auto i : a)
+    for (int i = 0; i < n + m; i++)
+    {
+        if (i < n)
+            a[i] = c[i];
+        else
+            b[i - n] = c[i];
+    }
+
+    for (auto i : b)
         cout << i << " ";
 
     return 0;
