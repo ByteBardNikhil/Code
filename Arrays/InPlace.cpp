@@ -1,19 +1,18 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
-
+int square(int x)
+{
+    return x * x;
+}
+int squareOfSum(int a, int b)
+{
+    int z = a + b;
+    int r = square(z);
+    return r;
+}
 int main()
 {
-    vector<int> a = {1, 1, 2, 2, 2, 3, 3, 3};
-    int i = 0;
-    for (int j = 1; j < a.size(); j++)
-    {
-        if (a[j] != a[i])
-        {
-            a[i + 1] = a[j];
-            i++;
-        }
-    }
-    cout << i + 1;
+    int a = 2, b = 3;
+    int result = squareOfSum(a, b);
+    cout << "\nResult : " << result;
 }

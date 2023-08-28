@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 vector<int> wt = {1, 5, 11, 15};
-static int t[4][11 + 1];
+static bool t[5][11 + 1];
 int sum(vector<int> v)
 {
     int s = 0;

@@ -1,17 +1,20 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-
 int main()
 {
-    string s = "9305";
-    sort(s.begin(), s.end(), [](char a, char b)
-         { return a > b; });
-    string s1 = s.substr(0, 2);
-    string s2 = s.substr(2);
+    vector<vector<int>> a = {{1, 3}, {2, 4}, {1, 6}, {8, 10}, {9, 15}, {16, 18}, {18, 20}};
 
-    int sum = stoi(s1) + stoi(s2);
-    cout << sum;
-    return 0;
+    int n = a.size();
+    vector<vector<int>> ans;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (ans.empty() || ans.back()[1] < a[i][0])
+            ans.push_back(a[i]);
+        else
+            ans.back()[1] = max(ans.back()[1], a[i][1]);
+    }
+    for (auto i : a)
+        for (auto j : i)
+            cout << j << " ";
 }

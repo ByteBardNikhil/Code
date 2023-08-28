@@ -4,9 +4,9 @@
 using namespace std;
 int main()
 {
-    vector<int> v = {1, 1, 1, 1, 1};
+    vector<int> v = {2, 3, 5, 6, 8, 10};
     int n = v.size();
-    int s = (3 + 5) / 2;
+    int s = 10;
     int t[n + 1][s + 1];
     memset(t, 0, sizeof(t));
     for (int i = 0; i < n; i++)

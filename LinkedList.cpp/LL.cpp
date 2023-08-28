@@ -1,53 +1,120 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-class node
+class Node
 {
 public:
     int data;
-    node *next;
-
-    node(int data)
-    {
-        this->data = data;
-        this->next = nullptr;
-    }
+    Node *next;
+    Node(int data) : data(data), next(nullptr) {}
 };
-void insertAtHead(node *&head, int data)
+class LinkedList
 {
-    node *temp = new node(data);
-    temp->next = head;
-    head = temp;
-}
-void print(node *&head)
-{
-    node *temp = head;
-    while (temp != nullptr)
+    Node *head;
+
+public:
+    LinkedList() : head(nullptr) {}
+    void insertAtBeg(int data)
     {
-        cout << temp->data << " ";
-        temp = temp->next;
+        Node *newNode = new Node(data);
+        newNode->next = head;
+        head = newNode;
     }
-    cout << "\n";
-}
-void insertAtTail(node *&tail, int data)
-{
-    node *temp = new node(data);
-    tail->next = temp;
-    tail = tail->next;
-}
+    void traverse()
+    {
+        Node *current = head;
+        cout << "\nElements of Linked List : ";
+        while (current)
+        {
+            cout << current->data << " ";
+            current = current->next;
+        }
+    }
+    void del()
+    {
+        if (head)
+        {
+            Node *temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
+    int length()
+    {
+        int c = 0;
+        Node *current = head;
+        while (current)
+        {
+            current = current->next;
+            c++;
+        }
+        return c;
+    }
+    void search(int key)
+    {
+        Node *current = head;
+        int pos = 0;
+        while (current)
+        {
+            if (current->data == key)
+            {
+                cout << "\nElement found at position : " << pos;
+                return;
+            }
+            pos++;
+            current = current->next;
+        }
+    }
+    void reverse()
+    {
+        Node *prev = nullptr, *current = head, *next = nullptr;
+        while (current)
+        {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+    void insertAtPoition(int data, int pos)
+    {
+        if (length() + 1 < pos)
+        {
+            cout << "\nCannot insert new node at : " << pos << "\nbecause lenght of linked list is : " << length() + 1;
+            return;
+        }
+        if (pos == 1)
+        {
+            insertAtBeg(data);
+            return;
+        }
+        Node *current = head;
+        for (int i = 1; i < pos - 1; i++)
+        {
+            current = current->next;
+        }
+        Node *newNode = new Node(data);
+
+        newNode->next = current->next;
+        current->next = newNode;
+        cout << "\nNew Node inserted ";
+    }
+    void delAtPosition(int pos)
+    {
+        Node *current = head;
+        }
+};
 int main()
 {
-    node *n1 = new node(23);
+    LinkedList ls;
+    ls.insertAtBeg(34);
+    ls.insertAtBeg(12);
+    ls.insertAtBeg(21);
+    ls.insertAtBeg(90);
 
-    node *head = n1;
-    node *tail = n1;
-    insertAtHead(tail, 45);
-    insertAtHead(tail, 42);
-    insertAtHead(tail, 12);
-
-    print(head);
-
-    return 0;
+    cout << "\nCount of Element in the Linekd List : " << ls.length();
+    ls.reverse();
+    ls.traverse();
+    ls.insertAtPoition(65, 6);
+    ls.traverse();
 }

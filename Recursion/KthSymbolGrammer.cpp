@@ -17,5 +17,5 @@ int kth(int n, int k)
 }
 int main()
 {
-    cout << "\n Answer : " << kth(4, 3);
+    cout << "\n Answer : " << kth(3, 3);
 }
