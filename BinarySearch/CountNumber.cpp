@@ -49,8 +49,9 @@ int main()
 
     vector<int> a = {2, 4, 10, 10, 10, 10, 10, 18, 20};
     int key = 10;
-
+    
     int res = lastOccurance(a, key) - firstOccurance(a, key) + 1;
     cout << "\nFinal Result : " << res;
+    
     return 0;
 }
