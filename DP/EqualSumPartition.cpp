@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<int> wt = {1, 5, 11, 15};
+vector<int> wt = {3,9,2,1};
 static bool t[5][11 + 1];
 int sum(vector<int> v)
 {
